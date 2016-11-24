@@ -1,0 +1,162 @@
+<?php
+require("config/config.php");
+require("lib/db.php");
+$conn=db_init($config["host"],$config["duser"],
+              $config["dpw"],$config["dname"]);
+$result=mysqli_query($conn,"SELECT * FROM topic");
+?>
+<!DOCTYPE html>
+<html>
+<head>
+      <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre|Gentium+Basic|Lobster|Oxygen|Playfair+Display|Roboto+Condensed|Rubik|Trirong|Oswald|Roboto Slab|Ubuntu|Anton" rel="stylesheet"> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!--  <meta name="viewport" content="width=device-width,initial-scale=1.0,
+    maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,"/> -->
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="블로그 html vitualworld programming and movie and programming">
+    <meta name="keywords" content="blog,html,vitualworld,가상현실,프로그래밍,자바,programming,coding,css,JavaScript,java">
+    <meta name="author" content="Kim Sangwon">
+    <title>세계의끝</title>
+    <link rel="shortcut icon" type="image/x-icon" href="p111.ico">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="gal.ico"> -->
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link href="/bootstrap-3.3.4-dist/css/bootstrap.min.css" 
+    rel="stylesheet">
+     
+</head>
+<body id="target">
+ <div class="container">
+   <header class="jumbotron text-center"> 
+        <a href= 
+        "https://search.naver.com/search.naver?sm=tab_hty.top&where=image&oquery=%EA%B0%95%EB%AF%BC%EA%B2%BD+%EB%AA%B8%EB%A7%A4&ie=utf8&query=%EC%8B%A0%EC%84%B8%EA%B2%BD">
+        <img src="http://www.cstimes.com/news/photo/201512/198144_184519_356.jpg" alt="sex" 
+        class="img-rounded" id="logo"></a>
+        <h1 id="sex"><a href="/index.php">PlanetSystem32</a></h1>
+   </header>
+  <div class="row">
+    <nav class="col-md-3">
+      <img src="/list1.png" width="50">
+      <ol class="nav nav-pills nav-stacked">
+      <?php
+      while($row = mysqli_fetch_assoc($result)){
+        echo '<li id="sex1"><a href="/index.php?id='.$row['id'].'">'.htmlspecialchars($row['title']).'</a></li>'."\n";
+      }
+      ?>    
+      </ol>
+    </nav>
+  <div class="col-md-9">
+  <article>
+  <?php
+  if(empty($_GET['id'])===false){
+   $sql="SELECT topic.id,title,name,description 
+         FROM topic LEFT
+         JOIN user ON topic.author=user.id 
+         WHERE topic.id=".$_GET['id'];
+   $result=mysqli_query($conn,$sql);
+   $row=mysqli_fetch_assoc($result);
+   echo '<h2>'.htmlspecialchars($row['title']).'</h2>';
+   echo '<p>'.htmlspecialchars($row['name']).'</p>';
+   echo strip_tags($row['description'], 
+        '<a><p><body><html><list><h1>
+         <h2><h3><iframe><ul><ol><li><img>');}
+  ?>
+  </article>
+  <hr color="blue">
+   <div id="control">
+      <div class="btn-group" role="group" aria-laber="...">
+       <input type="button" value="white" 
+          onclick="document.getElementById('target').className='white'"
+                   class="btn btn-default btn-lg"/>
+       <input type="button" value="black"
+          onclick="document.getElementById('target').className='black'"
+                   class="btn btn-default btn-lg"/>
+      </div>
+       <a href="/write.php" 
+          class="btn btn-success btn-lg">쓰기</a>   
+   </div>
+  </div>
+ </div>
+</div>
+  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <!--  <audio controls autoplay loop preload="auto">
+    <source src="mas.mp3" type="audio/mp3" />
+    <source src="train.mp3" type="audio/mp3" />
+    </audio>  -->
+
+    
+<script src="//code.jquery.com/jquery.min.js"></script>
+  <audio id="myaudio" controls="true" autoplay="true" loop> 
+      <source id="main" src="Listen To My Heart.mp3" type="audio/mp3" />
+      <source src="Kiss Me.mp3" type="audio/mp3" />
+      <source src="Richard Marx-Now And Forever.mp3" type="audio/mp3" />  
+      <source src="Cristina Aguilera - Come On Over.mp3" type="audio/mp3" />
+      <source src="Craig David - Insomnia-320K.mp3" type="audio/mp3" />
+      <source src="Ne-Yo-So Sick (Single)-192K.mp3" type="audio/mp3" />
+      <source src="Wham - Last Christmas.mp3" type="audio/mp3" /> 
+      <source src="이별여행.mp3" type="audio/mp3" />
+      <source src="Crazy In Love - Beyonce.mp3" type="audio/mp3" />
+      <source src="Yeah! - Usher.mp3" type="audio/mp3" />
+      <source src="Luther Vandross-Hello-192K.mp3" type="audio/mp3" />
+      <source src="Stacie Orrico-Stuck.mp3" type="audio/mp3" />
+      <source src="Hard.mp3" type="audio/mp3" />
+      <source src="d2.mp3" type="audio/mp3" />
+      <source src="train.mp3" type="audio/mp3" />
+      <source src="애원.mp3" type="audio/mp3" />
+      <source src="f4.mp3" type="audio/mp3" />
+      <source src="Mariah Carey-Without You.mp3" type="audio/mp3" />
+      <source src="f2.mp3" type="audio/mp3" />
+      <source src="f3.mp3" type="audio/mp3" />
+      <source src="Ent.mp3" type="audio/mp3" />
+      <source src="u1.mp3" type="audio/mp3" />
+      <source src="Sting - Shape of my heart.mp3" type="audio/mp3" />
+      <source src="take1.mp3" type="audio/mp3" />
+      <source src="The.Matrix.mp3" type="audio/mp3" />
+      <source src="Bo.mp3" type="audio/mp3" />
+      <source src="mas.mp3" type="audio/mp3" />
+      <source src="wor.mp3" type="audio/mp3" />
+      <source src="bea.mp3" type="audio/mp3" />
+      <source src="ba.mp3" type="audio/mp3" />
+      <source src="rain.mp3" type="audio/mp3" />
+      <source src="Wham - Careless Whisper.mp3" type="audio/mp3" />
+      <source src="Listen To My Heart.mp3" type="audio/mp3" />
+      <!-- <source src="" type="audio/mp3" /> -->
+  </audio>
+<script>
+$(function() {
+    var index = 1;
+    $('#play-next').click(function() {
+      index++;
+      if(index > $('#myaudio source').length) index=2;
+        console.log( index + '번째 소스 재생' );
+
+    $('#myaudio source#main').attr('src',
+      $('#myaudio source:nth-child('+index+')').attr('src'));
+      $("#myaudio")[0].load();
+      $("#myaudio")[0].play();
+    });
+});
+</script>
+  <button id="play-next">다음 곡 재생</button>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
